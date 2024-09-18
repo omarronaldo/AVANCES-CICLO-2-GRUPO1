@@ -5,17 +5,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Registrodeisis {
+public class RegistroAsistencia {
 
    static List<Persona> p= new ArrayList<>();
    static ArrayList<Persona> pp= new ArrayList<>();
 
     public static void main(String[] args) {
-        RegistrarAsistencia();
-        MostrarAsistencia();
+        registrarAsistencia();
+        mostrarAsistencia();
     }
 
-    public static void RegistrarAsistencia(){
+    public static void registrarAsistencia(){
         Scanner cs=new Scanner(System.in);
         String exisAlumnos="";
         System.out.println("Registrar Asistencia a Curso POO");
@@ -33,7 +33,7 @@ public class Registrodeisis {
         }while(exisAlumnos.toUpperCase().equals("S"));
     }
 
-    public static void MostrarAsistencia(){
+    public static void mostrarAsistencia(){
         System.out.println("Alamcenado en un LIST:");
         for(Persona p:p){
             System.out.println(p.toString());

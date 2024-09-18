@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListMain {
+    //Puntos: Pastor Lovon (2), Bonnier(1),
     public static void main(String[] args) {
         List<Persona> per=new ArrayList<>();
         per.add(new Persona("Pablito", "P", 'F'));
