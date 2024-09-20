@@ -45,7 +45,7 @@ public class TictacControl {
 
     @FXML
     public void initialize() {
-        anular();
+        eldefecto();
         tablero = new Button[][]{
                 {btn00, btn01, btn02},
                 {btn10, btn11, btn12},
@@ -74,15 +74,19 @@ public class TictacControl {
 
     @FXML
     public void anular() {
-
+        alpreisonar();
+        activaDesacticaB(true);
+    }
+    @FXML
+    public void eldefecto(){
         activaDesacticaB(true);
     }
 
     @FXML
     void accionButon(ActionEvent e) {
-        Button b = (Button) e.getSource();
-        if (b.getText().isEmpty()) {
-            b.setText(turno ? "X" : "O");
+        Button boton = (Button) e.getSource();
+        if (boton.getText().isEmpty()) {
+            boton.setText(turno ? "X" : "O");
             if (verificarGanador()) {
                 String ganador = turno ? jugador1 : jugador2;
                 registrarResultado(ganador, "Terminado", "1");
@@ -99,22 +103,28 @@ public class TictacControl {
     }
 
     public boolean verificarGanador() {
-        for (int i = 0; i < 3; i++) {//es para comprobar si las filas columas y diagonles son iguale
+        for (int i = 0; i < 3; i++) {
+            //es para comprobar si las filas columas y diagonles son iguale
             if (tablero[i][0].getText().equals(tablero[i][1].getText()) &&
                     tablero[i][0].getText().equals(tablero[i][2].getText()) && !tablero[i][0].getText().isEmpty()) {
+                eldefecto();
                 return true;
+
             }
             if (tablero[0][i].getText().equals(tablero[1][i].getText()) &&
                     tablero[0][i].getText().equals(tablero[2][i].getText()) && !tablero[0][i].getText().isEmpty()) {
+                eldefecto();
                 return true;
             }
         }
         if (tablero[0][0].getText().equals(tablero[1][1].getText()) &&
                 tablero[0][0].getText().equals(tablero[2][2].getText()) && !tablero[0][0].getText().isEmpty()) {
+            eldefecto();
             return true;
         }
         if (tablero[0][2].getText().equals(tablero[1][1].getText()) &&
                 tablero[0][2].getText().equals(tablero[2][0].getText()) && !tablero[0][2].getText().isEmpty()) {
+            eldefecto();
             return true;
         }
         return false;
@@ -161,5 +171,9 @@ public class TictacControl {
                 tablero[i][j].setText("");
             }
         }
+    }
+    @FXML
+    void alpreisonar (){
+        registrarResultado("Anulado", "Terminado", "0");
     }
 }
